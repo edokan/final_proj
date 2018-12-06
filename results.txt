@@ -2,4 +2,14 @@ v1 - Adam(lr=.01)
 	train: 0.9489247311827957
 	val: 0.9354838709677419
 	test: 0.9241935483870968
-
+v2 - Adam(lr=.001, weight_decay=.01)
+	train: 0.9681003584229391
+	val: 0.9629032258064516
+	test: 0.9354838709677419
+v3 - same 250 epochs
+	lower but were above for times
+	test: 0.9354838709677419
+v4 - batch_size 80 100 epochs
+	train: 0.9754480286738352
+	val: 0.9629032258064516
+	test: 0.95

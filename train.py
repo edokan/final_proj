@@ -33,7 +33,7 @@ def run():
     # assert(len(test_loader) == batch_size)
 
     loss_fn = nn.CrossEntropyLoss().to(device)
-    optimizer = optim.Adam(params=model.parameters(), weight_decay=.01, lr=.001)
+    optimizer = optim.Adam(params=model.parameters(), weight_decay=.01, lr=.001, eps=1e-08, )
 
 
     epoch = 1
