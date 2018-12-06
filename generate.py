@@ -32,22 +32,22 @@ def Cleanup():
 def GenerateCharacters():
     # Counter
     k = 1
-    # Process the font files
-    for dirname, dirnames, filenames in os.walk(font_dir):
-        # For each font do
-        for filename in filenames:
-            # Get font full file path
-            font_resource_file = os.path.join(dirname, filename)
-        
-            # For each character do
-            for char in characters:
+    # For each character do
+    for i in range(len(characters)):
+        os.mkdir(out_dir +str(i))
+        # Process the font files
+        for dirname, dirnames, filenames in os.walk(font_dir):
+            # For each font do
+            for filename in filenames:
+                # Get font full file path
+                font_resource_file = os.path.join(dirname, filename)
                 # For each font size do
                 for font_size in font_sizes:
                     if font_size > 0:
                         # For each background color do
                         for background_color in background_colors:
                             # Convert the character into unicode
-                            character = str(char)
+                            character = str(characters[i])
             
                             # Create character image : 
                             # Grayscale, image size, background color
@@ -75,12 +75,8 @@ def GenerateCharacters():
                             draw.text((x, y), character, (245-background_color) + \
                             randint(0, 10) , font=font)
                     
-                            # Final file name                   
-                            file_name = out_dir + str(k) + '_' + \
-                            filename + '_fs_' + \
-                            str(font_size) + '_bc_' + \
-                            str(background_color) + '.' + \
-                            character + '.png'
+                            # Final file name                    
+                            file_name = out_dir + str(i) + '/' + str(k) + '.png'
             
                             # Save image
                             char_image.save(file_name)
@@ -95,10 +91,10 @@ def GenerateCharacters():
 #---------------------------------- Input and Output ---------------------------#
 
 # Directory containing fonts
-font_dir = '/System/Library/Fonts/test'
+font_dir = 'test/'
 
 # Output
-out_dir = '/Users/John/Desktop/data/'
+out_dir = 'data/'
 
 #------------------------------------ Characters -------------------------------#
 
@@ -142,4 +138,4 @@ image_size = 32
 Cleanup()
 
 # Generate characters
-# GenerateCharacters()
+GenerateCharacters()

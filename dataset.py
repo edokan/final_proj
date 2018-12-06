@@ -8,6 +8,7 @@ root_test = './data/test'
 
 # Transformation to turn images into tensors and normalize this tensor image
 transformation = transforms.Compose([
+    transforms.Grayscale(),
     transforms.ToTensor(),
     transforms.Normalize([0.5]*3, [0.5]*3)
     ])
@@ -34,10 +35,10 @@ def get_data_loaders(batch_size):
     
     """
     train_loader = torch.utils.data.DataLoader(
-            train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
+            training_data, batch_size=batch_size, shuffle=True, num_workers=4)
     val_loader = torch.utils.data.DataLoader(
-            val_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
+            validation_data, batch_size=batch_size, shuffle=False, num_workers=4)
     test_loader = torch.utils.data.DataLoader(
-            test_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
+            test_data, batch_size=batch_size, shuffle=False, num_workers=4)
     return (train_loader, val_loader, test_loader)
 
