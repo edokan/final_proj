@@ -35,4 +35,6 @@ def write_output_file(segmented_input, name):
                 output_file.write(lookup_dict[top[0].item()])
             output_file.write(' ')
         output_file.write('\n')
-write_output_file(i, 'x')
+
+    print("finished!")
+# write_output_file(i, 'x')
